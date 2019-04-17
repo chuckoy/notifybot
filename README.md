@@ -1,3 +1,5 @@
+NOTE: Forked to make package compatible with Python3
+
 # deploybot
 ![](https://raw.githubusercontent.com/danielwhatmuff/notifybot/master/img/screenshot.png)
 
