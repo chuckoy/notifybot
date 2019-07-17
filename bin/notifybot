@@ -7,13 +7,13 @@ Args:
     -t --token          Slack Token used for authentication (Must specify this or webhook, not both)
     -w --webhook        Use this incoming webhook url instead of an API token.
 """
-from slackclient import SlackClient
-import json
-import time
-import sys
-import os
+
 import argparse
+import json
+import os
 import requests
+import slack
+import sys
 
 
 if not os.environ.get('TRAVIS_BRANCH') or not os.environ.get('TRAVIS_BUILD_NUMBER') or not os.environ.get('TRAVIS_REPO_SLUG'):
@@ -35,8 +35,7 @@ def parse_arguments():
 
 
 def notify_slack(message):
-    sc.api_call(
-        'chat.postMessage',
+    sc.chat_postMessage(
         channel=slack_channel,
         text=message,
         username='Travis-Deployment',
@@ -48,7 +47,7 @@ ARGS = parse_arguments()
 slack_channel = '#{}'.format(ARGS.channel)
 token = ARGS.token
 webhook = ARGS.webhook
-sc = SlackClient(token)
+sc = slack.WebClient(token)
 
 
 def run():
@@ -78,5 +77,6 @@ def run():
         else:
             print('Notification error, response code {}'.format(response.status_code))
             sys.exit()
+
 
 run()

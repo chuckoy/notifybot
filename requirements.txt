@@ -1,2 +1,2 @@
-slackclient==1.0.5
-requests==2.14.2
+slackclient~=2.1.0
+requests~=2.14.0

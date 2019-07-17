@@ -2,6 +2,10 @@
 
 History
 -------
+0.0.5
++++++
+* Update to slackclient version 2 and lock to those versions
+
 0.0.4
 +++++
 * Fix string format syntax for compatibility
